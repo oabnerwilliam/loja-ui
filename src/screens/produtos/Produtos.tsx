@@ -12,11 +12,11 @@ export const Produtos = () => {
   if (!produtos) return <h1>Não há dados.</h1>
 
   return (
-    <>
+    <div className="w-full h-[100vh] flex flex-col items-center justify-center gap-8">
       <FormProvider {...form}>
         <form
           onSubmit={handleSubmit(submitForm)}
-          className="flex flex-col w-[30rem]"
+          className="flex flex-col w-[30rem] gap-2"
         >
           <Input
             type="text"
@@ -39,13 +39,15 @@ export const Produtos = () => {
           <Button className="cursor-pointer">Enviar</Button>
         </form>
       </FormProvider>
-      {produtos.map((produto: Produto) => (
-        <div key={produto.id}>
-          <h1 className="text-red-600">{produto.nome}</h1>
-          <h3>{produto.categoria}</h3>
-          <p>R${produto.preco.toFixed(2)}</p>
-        </div>
-      ))}
-    </>
+      <div className="grid grid-cols-3 gap-8">
+        {produtos.map((produto: Produto) => (
+          <div key={produto.id}>
+            <h1 className="text-red-600">{produto.nome}</h1>
+            <h3>{produto.categoria}</h3>
+            <p>R${produto.preco.toFixed(2)}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }

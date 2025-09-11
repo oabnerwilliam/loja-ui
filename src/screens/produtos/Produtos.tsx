@@ -4,10 +4,10 @@ import { Button } from "../../components/ui/button"
 import { Input } from "../../components/ui/input"
 
 export const Produtos = () => {
-  const { produtos, isLoading, form, submitForm } = useProdutos()
+  const { produtos, loading, form, submitForm } = useProdutos()
   const { handleSubmit, register } = form
 
-  if (isLoading) return <h1>Carregando</h1>
+  if (loading) return <h1>Carregando...</h1>
 
   if (!produtos) return <h1>Não há dados.</h1>
 
@@ -25,7 +25,7 @@ export const Produtos = () => {
             className="outline-none"
           />
           <Input
-            type="text"
+            type="number"
             {...register("preco")}
             placeholder="Preço"
             className="outline-none"
